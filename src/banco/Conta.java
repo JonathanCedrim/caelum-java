@@ -10,8 +10,12 @@ public abstract class Conta {
 		if (saldo + limite > montante) {
 			this.saldo = saldo + limite - montante;
 		} else {
-			throw new IllegalArgumentException("saldo insuficiente");
+			throw new LogicaDeNegocioException("saldo insuficiente");
 		}
+	}
+
+	double saldo() {
+		return this.saldo;
 	}
 
 	public void deposita(double montante) {
@@ -26,13 +30,22 @@ public abstract class Conta {
 			throw new IllegalArgumentException("saldo insuficiente");
 		}
 	}
-	
-	public void atualiza(double taxa){
+
+	public void atualiza(double taxa) {
 		this.saldo += this.saldo * taxa;
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		Conta outraConta = (Conta) obj;
+
+		if (this.saldo() == outraConta.saldo()) {
+			return true;
+		}
+		return false;
+	}
+
 	public String toString() {
-		return "Conta [numero=" + numero + ", cliente=" + cliente + ", saldo="
-				+ saldo + ", limite=" + limite + "]";
+		return "Conta [numero=" + numero + ", cliente=" + cliente + ", saldo=" + saldo + ", limite=" + limite + "]";
 	}
 }

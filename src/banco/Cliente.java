@@ -1,5 +1,10 @@
 package banco;
 
+/**
+ * Class responsavel pelo cliente
+ * 
+ */
+
 public class Cliente implements Autenticavel {
 	private String name;
 	private String RG;
@@ -17,6 +22,11 @@ public class Cliente implements Autenticavel {
 		return "Cliente [name=" + this.name + ", RG=" + this.RG + ", cpf=" + this.cpf + "]";
 	}
 
+	
+	/**
+	 * Metodo autentica entrada no sistema
+	 * @param senha
+	 */
 	public boolean autentica(int senha) {
 		if (this.senha == senha) {
 			return true;
