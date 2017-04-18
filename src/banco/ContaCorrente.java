@@ -1,6 +1,6 @@
 package banco;
 
-public class ContaCorrente extends Conta implements Tributavel {
+public class ContaCorrente extends Conta implements Tributavel, Comparable<ContaCorrente> {
 
 	@Override
 	public void atualiza(double taxa) {
@@ -14,5 +14,14 @@ public class ContaCorrente extends Conta implements Tributavel {
 
 	public double calculaTributo() {
 		return this.saldo * 0.01;
+	}
+
+	@Override
+	public String toString() {
+		return "R$" + this.saldo;
+	}
+
+	public int compareTo(ContaCorrente cc) {
+		return Integer.compare(this.numero, cc.numero);
 	}
 }

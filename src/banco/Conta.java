@@ -1,8 +1,8 @@
 package banco;
 
 public abstract class Conta {
-	private int numero;
-	private Cliente cliente;
+	protected int numero;
+	protected Cliente cliente;
 	protected double saldo;
 	private double limite;
 
@@ -45,6 +45,7 @@ public abstract class Conta {
 		return false;
 	}
 
+	@Override
 	public String toString() {
 		return "Conta [numero=" + numero + ", cliente=" + cliente + ", saldo=" + saldo + ", limite=" + limite + "]";
 	}
