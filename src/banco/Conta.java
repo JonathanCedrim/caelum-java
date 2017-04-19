@@ -14,7 +14,7 @@ public abstract class Conta {
 		}
 	}
 
-	double saldo() {
+	public double saldo() {
 		return this.saldo;
 	}
 
@@ -36,13 +36,25 @@ public abstract class Conta {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		Conta outraConta = (Conta) obj;
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + numero;
+		return result;
+	}
 
-		if (this.saldo() == outraConta.saldo()) {
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
 			return true;
-		}
-		return false;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Conta other = (Conta) obj;
+		if (numero != other.numero)
+			return false;
+		return true;
 	}
 
 	@Override
